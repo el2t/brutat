@@ -1,0 +1,48 @@
+<div id="login">
+		<h1><a href="http://ar.wordpress.org/" title="يعمل بواسطة برنامج ووردبريس" tabindex="-1">el2t</a></h1>
+	
+<form name="loginform" id="loginform" action="http://192.168.2.2/wp/wp-login.php" method="post">
+	<p>
+		<label for="user_login">اسم المستخدم أو البريد الإلكتروني<br>
+		<input name="log" id="user_login" class="input" value="" size="20" type="text"></label>
+	</p>
+	<p>
+		<label for="user_pass">كلمة المرور<br>
+		<input name="pwd" id="user_pass" class="input" value="" size="20" type="password"></label>
+	</p>
+		<p class="forgetmenot"><label for="rememberme"><input name="rememberme" id="rememberme" value="forever" type="checkbox"> تذكرني</label></p>
+	<p class="submit">
+		<input name="wp-submit" id="wp-submit" class="button button-primary button-large" value="دخول" type="submit">
+		<input name="redirect_to" value="http://192.168.2.2/wp/wp-admin/" type="hidden">
+		<input name="testcookie" value="1" type="hidden">
+	</p>
+</form>
+
+<p id="nav">
+	<a href="http://192.168.2.2/wp/wp-login.php?action=lostpassword">هل فقدت كلمة مرورك؟</a>
+</p>
+
+<script type="text/javascript">
+function wp_attempt_focus(){
+setTimeout( function(){ try{
+d = document.getElementById('user_login');
+d.focus();
+d.select();
+} catch(e){}
+}, 200);
+}
+
+/**
+ * Filters whether to print the call to `wp_attempt_focus()` on the login screen.
+ *
+ * @since 4.8.0
+ *
+ * @param bool $print Whether to print the function call. Default true.
+ */
+wp_attempt_focus();
+if(typeof wpOnload=='function')wpOnload();
+</script>
+
+	<p id="backtoblog"><a href="http://192.168.2.2/wp/">→ العودة إلى el2t</a></p>
+	
+	</div>
