@@ -313,30 +313,3 @@ class start_scan:
         start_scan.soup = soup
         self.timer()
 
-
-if __name__ == '__main__':
-    # data_in = data_con('', '', '', '', '', '', '', '', '', '', '', '', '', '')
-    print 'hi'
-'''
-data_in = data_con('', '', '', '', '', '', '', '', '', '')
-data_in.load_record()
-# data_in.view_records()
-rowid = data_in.lrowid
-#site = data_in.lsite
-site = 'http://192.168.2.2/wp/wp-login.php'
-passp = data_in.lpassp
-proxyp = data_in.lproxyp
-cpassword = data_in.lcpassword
-username = data_in.lusername
-passlist = data_in.lpasslist
-proxylist = data_in.lproxylist
-passlen = data_in.lpasslen
-proxylen = data_in.lproxylen
-
-self.luserform = data_in.luserform
-self.lpassform = data_in.lpassform
-
-
-data_in.update_row('', 1, 2, '', 'el2t', '', '', '', '', 1)
-
-'''
