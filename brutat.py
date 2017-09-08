@@ -463,14 +463,3 @@ if __name__ == '__main__':
     main_f = main('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')
     data_in = mod.data_con('', '', '', '', '', '', '', '', '', '', '', '', '', '')
     main_f.cmdline()
-
-
-
-
-    '''
-    command_line(sys.argv[1:])
-    # mod.create_db()
-    data_in.update_row('http://41.239.100.68/wp/wp-login.php', 1, 1, '', 'el2t', '', '', '', '', 1)
-    data_in.load_record()
-    main('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', use_proxy).run()
-    '''
