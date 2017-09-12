@@ -2,6 +2,10 @@
 
 # brutat made to brute force any html login page 
 
+# Tutorial
+
+https://www.facebook.com/memsbaba/videos/10212423365793589/
+
 -createdb       [ Create database           ]
 
 -view           [ View database record      ]
