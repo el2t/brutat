@@ -1,0 +1,5 @@
+mechanize
+sqlite3
+BeautifulSoup
+html2text
+colored
