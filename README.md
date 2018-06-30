@@ -6,7 +6,7 @@
 
 https://www.facebook.com/memsbaba/videos/10212423365793589/
 
--lib inastall [ pip install -r requirements.txt --no-index ]
+-lib install [ pip install -r requirements.txt --no-index ]
 
 -createdb       [ Create database           ]
 
