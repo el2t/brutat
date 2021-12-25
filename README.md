@@ -4,7 +4,7 @@
 
 # Tutorial
 
-https://www.facebook.com/memsbaba/videos/10212423365793589/
+https://www.facebook.com/profile.php?id=100075886746136
 
 -lib install [ pip install -r requirements.txt --no-index ]
 
