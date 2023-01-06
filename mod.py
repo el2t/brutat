@@ -2,8 +2,8 @@
 # encoding=utf8
 
 '''
-	Author : el2t
-	Web Site : fb.com/el2tlinux
+	Author : Osama Roza
+	Web Site : www.brmgha.com
 	Version: 0.1
 	Date: start 29/8/2017
 '''
